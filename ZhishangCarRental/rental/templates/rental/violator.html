@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+	<p>查询可能的违规人 输入牌照和违规日期（例如20150815）</p>
+	<form action="/violator/" method="post">
+	    {% csrf_token %}
+	    {{ form }}
+	    <input type="submit" value="Submit" />
+	</form>
+	{% if riqi %}
+		<header>
+			<h2>违规日期：{{riqi}}</h2>
+            <h2>违规车辆牌照：{{paizhao}}</h2>
+		</header>
+		{% if res_list %}		
+			<table>
+                <tr>
+					<th>起始日期</th>
+					<th>结束日期</th>
+                    <th>顾客姓名</th>
+				</tr>
+				{% for res in res_list %}
+			        <tr>
+			        	<td>{{ res.startDate }}</td>
+                        <td>{{ res.endDate }}</td>
+                        <td>{{ res.customer.name }}</td>
+			        </tr>
+		    	{% endfor %}
+			</table>	
+		{% else %}
+			<p>该车在指定日期没有违规</p>
+		{% endif %}
+	{% endif %}
+{% endblock content %}

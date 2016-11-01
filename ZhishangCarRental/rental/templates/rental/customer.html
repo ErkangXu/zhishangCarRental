@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<p>查询顾客信息：预定，违规，消费额</p>
+	<form action="/customer/" method="post">
+	    {% csrf_token %}
+	    {{ form }}
+	    <input type="submit" value="Submit" />
+	</form>
+    {% if ind %}
+	    {% if customer_info_list %}
+		    <header>
+			    <h1>选中客户</h1>
+		    </header>
+		    {% for customer_info in customer_info_list %}	
+			    <header>
+				    <h2>{{customer_info.name}} {{customer_info.id}}</h2>
+			    </header>
+			    {% if customer_info.res_entries %}
+				    <table>
+					    <tr>
+						    <th>车牌／日期</th>
+						    <th>价格</th>
+					    </tr>
+					    {% for shiduan,jiage in customer_info.res_entries.items %}
+						    <tr>
+							    <td>{{ shiduan }}</td>
+							    <td>{{ jiage }}<td>
+						    </tr>
+					    {% endfor %}
+					    <tr>
+						    <td>总计{{ customer_info.res_num }}次</td>
+						    <td>{{ customer_info.to_spending }}元<td>
+					    </tr>
+				    </table>	
+		        {% else %}
+			        <p>该用户没有预定纪录</p>
+		        {% endif %}
+
+		        {% if customer_info.vio_entries %}		
+			        <table>
+				        <tr>
+					        <th>车牌／日期／类型</th>
+					        <th>扣分／罚款金额</th>
+				        </tr>
+				        {% for left,right in customer_info.vio_entries.items %}
+			                <tr>
+			        	        <td>{{ left }}</td>
+			        	        <td>{{ right }}<td>
+			                </tr>
+		    	        {% endfor %}
+		    	        <tr>
+		        	        <td>总计</td>
+		        	        <td>{{ customer_info.vio_number }}<td>
+		                </tr>
+			        </table>	
+		        {% else %}
+			        <p>该用户没有违规纪录</p>
+		        {% endif %}
+		    {% endfor %}
+        {% else %}
+            <p>该用户不存在</p>
+	    {% endif %}
+    {% endif %}
+{% endblock content %}
