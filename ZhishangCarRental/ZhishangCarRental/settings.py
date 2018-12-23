@@ -131,16 +131,16 @@ LOGGING = {
         },
     },
     'handlers': {
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-            'formatter': 'simple'
+        'logfile': {
+             'class': 'logging.handlers.WatchedFileHandler',
+             'filename': 'D:\home\site\wwwroot\zhishangApp.log'
         },
     },
     'loggers': {
         'rental': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
+            'handlers': ['logfile'],
+            'level': 'ERROR',
+            'propagate': False,
         },
     }
 }
