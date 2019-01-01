@@ -3,5 +3,6 @@ set -e
 
 echo "Starting SSH ..."
 service ssh start
+touch /home/site/wwwroot/evidence
 
-gunicorn --bind=0.0.0.0 --timeout 600 /home/site/wwwroot/ZhishangCarRental.wsgi
+python manage.py runserver 0.0.0.0:8000
