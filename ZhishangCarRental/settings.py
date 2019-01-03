@@ -133,13 +133,13 @@ LOGGING = {
     'handlers': {
         'logfile': {
              'class': 'logging.handlers.WatchedFileHandler',
-             'filename': '/home/site/wwwroot/zhishangApp.log'
+             'filename': 'D:\home\site\wwwroot\zhishangApp.log'
         },
     },
     'loggers': {
         'rental': {
             'handlers': ['logfile'],
-            'level': 'INFO',
+            'level': 'ERROR',
             'propagate': False,
         },
     }
