@@ -13,6 +13,7 @@ apt-get update
 
 apt-get -y install msodbcsql
 apt-get -y install gnupg
+apt-get -y install gnupg2
 
 apt-get -y install g++
 apt-get -y install unixodbc-dev
