@@ -12,6 +12,7 @@ curl https://packages.microsoft.com/config/debian/8/prod.list > /etc/apt/sources
 apt-get update
 
 apt-get -y install msodbcsql
+apt-get -y install gnupg
 
 apt-get -y install g++
 apt-get -y install unixodbc-dev
