@@ -25,7 +25,7 @@ SECRET_KEY = 'ro3wt466zr5vu4n9(8a_m1@(fa=emkbech-b(7i(#3%ky+52m7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['zhishangcarrentalwebsite.azurewebsites.net']
 
 
 # Application definition
