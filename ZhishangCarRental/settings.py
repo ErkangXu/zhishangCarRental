@@ -83,7 +83,7 @@ DATABASES = {
         'HOST':'cwensyk0vm.database.windows.net',
         'PORT':'1433',
         'OPTIONS': {
-            'driver': 'ODBC Driver 13 for SQL Server',
+            'driver': 'SQL Server Native Client 11.0',
             'MARS_Connection': 'True',
         }
     }
