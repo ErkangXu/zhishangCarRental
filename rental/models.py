@@ -23,8 +23,8 @@ class Reservation(models.Model):
 		('CASH', '现金'),
 		('CARD', '信用卡'),
 	)
-	customer = models.ForeignKey('Customer', verbose_name="顾客")
-	car = models.ForeignKey('Car', verbose_name="车辆")
+	customer = models.ForeignKey('Customer', verbose_name="顾客", on_delete=models.CASCASE,)
+	car = models.ForeignKey('Car', verbose_name="车辆", on_delete=models.CASCASE,)
 	startDate = models.DateField(verbose_name="取车日期")
 	endDate = models.DateField(verbose_name="还车日期（必须在取车日期之后）")
 	total_amount = models.IntegerField(verbose_name="单价") # To avoid the trouble of syncing DB, I keep using the total_amount for daily rate
@@ -65,9 +65,9 @@ class Violation(models.Model):
 	class Meta:
 		verbose_name = "违规"
 		verbose_name_plural	 = "违规"
-	car = models.ForeignKey('Car', verbose_name="车辆")
+	car = models.ForeignKey('Car', verbose_name="车辆", on_delete=models.CASCASE,)
 	location = models.CharField(max_length=50, verbose_name="违规地点")
-	violator = models.ForeignKey('Customer', verbose_name="违规顾客")
+	violator = models.ForeignKey('Customer', verbose_name="违规顾客", on_delete=models.CASCASE,)
 	date = models.DateField(verbose_name="日期")
 	kind = models.CharField(max_length=30, verbose_name="违规类型")
 	fine = models.IntegerField(verbose_name="罚款金额")
