@@ -17,5 +17,6 @@ apt-get update
 
 apt-get -y install g++
 apt-get -y install unixodbc-dev
+apt-get -y install msodbcsql17
 
 gunicorn --bind=0.0.0.0:8000 --timeout 600 ZhishangCarRental.wsgi
